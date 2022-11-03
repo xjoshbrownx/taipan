@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Saved Games{% endblock %}
+
+{% block navbar %}
+<nav>
+    <div>
+        <span>SAVED GAMES</span>
+    </div>
+    <div>
+        <a href='#'>+</a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+    {% for game in user.players.all %}
+    <div>
+        <span>{{ game.company_name }}</span>
+    </div>
+    {% endfor %}
+{% endblock %}
