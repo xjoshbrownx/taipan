@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'game/base.html' %}
 
 {% block title %}Saved Games{% endblock %}
 
@@ -14,6 +14,10 @@
 {% endblock %}
 
 {% block content %}
+    <div>
+        <span>SAVED GAMES</span>
+        <a href="{% url 'new_game' %}">+</a>
+    </div>
     {% for game in user.players.all %}
     <div>
         <span>{{ game.company_name }}</span>

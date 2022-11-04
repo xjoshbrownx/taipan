@@ -10,7 +10,7 @@ from game.models import GameState, Game
 class SavedGames(LoginRequiredMixin, ListView):
     model = get_user_model()
     context_object_name = 'user'
-    template_name = 'saved_games.html'
+    template_name = 'game/saved_games.html'
 
 
 # class NewGame(FormView):
@@ -38,8 +38,9 @@ class GameView(DetailView):
     template_name = 'game/game.html'
 
     def get_object(self):
-        return GameState.objects.filter(game__id = self.kwargs.get('pk'),date = self.kwargs.get('date'))
-
+        out = GameState.objects.get(game__id = self.kwargs.get('pk'),date = self.kwargs.get('date'))
+        # print(dict(out))
+        return out
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     context["game_state"] = GameState.objects.filter(date=self.request)

@@ -18,7 +18,10 @@ class Game(models.Model):
     #     return super().save()
 
     def initialize(self):
-        init_game = GameState(game=self)
+        if self.debt_or_guns == 'G':
+            init_game = GameState(game=self,debt=0,cash=0,guns=5)
+        else:
+            init_game = GameState(game=self)
         init_game.save()
         
 
