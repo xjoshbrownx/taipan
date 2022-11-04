@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'game/base.html' %}
 
 {% block title %}Saved Games{% endblock %}
 
@@ -16,22 +16,104 @@
 {% block content %}
 {% comment %} CARGO START {% endcomment %}
 <div>
-
+    <table>
+        <th>
+            <td>Cargo</td>
+            <td>In Hold</td>
+            <td>Warehouse</td>
+        </th>
+        <tr>
+            <td>Opium</td>
+            <td>{{ game.opium_ship }}</td>
+            <td>{{ game.opium_wh }}</td>
+        </tr>
+        <tr>
+            <td>Silk</td>
+            <td>{{ game.silk_ship }}</td>
+            <td>{{ game.silk_wh }}</td>
+        </tr>
+        <tr>
+            <td>Arms</td>
+            <td>{{ game.arms_ship }}</td>
+            <td>{{ game.arms_wh }}</td>
+        </tr>
+        <tr>
+            <td>General</td>
+            <td>{{ game.general_ship }}</td>
+            <td>{{ game.general_wh }}</td>
+        </tr>
+        <tr>
+            <td>Vacant</td>
+            <td>{{ game.vacant_ship }}</td>
+            <td>{{ game.vacant_wh }}</td>
+        </tr>
+    </table>
 </div>
 {% comment %} CARGO END {% endcomment %}
 {% comment %} CASH START {% endcomment %}
 <div>
-
+    <span>-----------------------------------</span>
+    <table>
+        <tr>
+            <td>Cash:</td>
+            <td>{{ game.cash }}</td>
+            <td>|</td>
+            <td>{{ game.month }}</td>
+            <td>{{ game.year }}</td>
+        </tr>
+        <tr>
+            <td>Bank:</td>
+            <td>{{ game.bank }}</td>
+            <td>|</td>
+            <td>Ship:</td>
+            <td>{{ game.ship_health }}%</td>
+        </tr>
+        <tr>
+            <td>Debt:</td>
+            <td>{{ game.debt }}</td>
+            <td>|</td>
+            <td>Guns:</td>
+            <td>{{ game.guns }}</td>
+        </tr>
+    </table>
 </div>
 {% comment %} CASH END {% endcomment %}
+{% comment %} SPOT START {% endcomment %}
+<div>
+    <span>-----------------------------------</span>
+    <table>
+        <tr>
+            <td>Spot:</td>
+            <td>Opium:</td>
+            <td>{{ game.opium_spot }}</td>
+            <td>Silk:</td>
+            <td>{{ game.silk_spot }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Arms:</td>
+            <td>{{ game.arms_spot }}</td>
+            <td>General:</td>
+            <td>{{ game.general_spot }}</td>
+        </tr>
+    </table>
+</div>
+{% comment %} SPOT END {% endcomment %}
 {% comment %} MESSAGE START {% endcomment %}
 <div>
-
+    <span>-----------------------------------</span>
+    message
 </div>
 {% comment %} MESSAGE END {% endcomment %}
 {% comment %} NAVIGATION START {% endcomment %}
 <div>
-
+    <a href='#'>Hong Kong</a>
+    <a href='#'>Shanghai</a>
+    <a href='#'>Nagasaki</a>
+    <a href='#'>Saigon</a>
+    <a href='#'>Manila</a>
+    <a href='#'>Singapore</a>
+    <a href='#'>Batavia</a>
 </div>
 {% comment %} NAVIGATION END {% endcomment %}
 
