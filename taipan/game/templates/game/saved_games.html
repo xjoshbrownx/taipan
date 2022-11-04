@@ -8,19 +8,42 @@
         <span>SAVED GAMES</span>
     </div>
     <div>
-        <a href='#'>+</a>
+        <a href="{% url 'new_game' %}">+</a>
     </div>
 </nav>
 {% endblock %}
 
 {% block content %}
+    {% for game in games %}
+        {% for gamestate in game.game_state.all|slice:":-1" %}
+
+    <span>------------------------------------------------</span>
+    <a href="{% url 'game' pk=game.id date=gamestate.date %}"
     <div>
-        <span>SAVED GAMES</span>
-        <a href="{% url 'new_game' %}">+</a>
+        <table>
+            <tr>
+                <th>{{ game.company_name }}</th>
+                <th>{{ gamestate.month }} {{ gamestate.year }}</th>
+            </tr>
+            <tr>
+                <td>Ship Size / Guns</td>
+                <td>{{ gamestate.ship_size }}/{{ gamestate.guns }} ({{ gamestate.ship_health}}%)</td>
+            </tr>
+            <tr>
+                <td>Cash</td>
+                <td>{{ gamestate.cash }}</td>
+            </tr>
+            <tr>
+                <td>Net Worth</td>
+                <td>{{ gamestate.bank }}</td>
+            </tr>
+            <tr>
+                <td>Score</td>
+                <td>{{ gamestate.x_points }}</td>
+            </tr>
+        </table>
+    <span>------------------------------------------------</span>
     </div>
-    {% for game in user.players.all %}
-    <div>
-        <span>{{ game.company_name }}</span>
-    </div>
+        {% endfor %}
     {% endfor %}
 {% endblock %}

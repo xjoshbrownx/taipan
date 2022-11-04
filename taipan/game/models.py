@@ -73,7 +73,7 @@ class GameState(models.Model):
         (DEC,'December'),
     ]
 
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, related_name='game_state', on_delete=models.CASCADE)
     current_location = models.CharField(choices=LOCATIONS, max_length=2, default=HONGKONG)
     date = models.IntegerField(default=0)
     month = models.IntegerField(default=1, choices=MONTHS)

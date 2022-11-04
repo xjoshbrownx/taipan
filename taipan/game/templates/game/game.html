@@ -1,14 +1,14 @@
 {% extends 'game/base.html' %}
 
-{% block title %}Saved Games{% endblock %}
+{% block title %}{{ game.current_location }}{% endblock %}
 
 {% block navbar %}
 <nav>
     <div>
-        <span>SAVED GAMES</span>
+        <span>{{ game.current_location }}</span>
     </div>
     <div>
-        <a href='#'>+</a>
+        <a href="{% url 'saved_games' %}">PAUSE</a>
     </div>
 </nav>
 {% endblock %}

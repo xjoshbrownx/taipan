@@ -8,15 +8,16 @@ from game.models import GameState, Game
 
 # Create your views here.
 class SavedGames(LoginRequiredMixin, ListView):
-    model = get_user_model()
-    context_object_name = 'user'
+    # model = Game
+    context_object_name = 'games'
     template_name = 'game/saved_games.html'
 
+    def get_queryset(self):
+        return Game.objects.filter(player=self.request.user).prefetch_related('game_state')
 
-# class NewGame(FormView):
-#     template_name = 'game/new_game.html'
-#     form_class = NewGame
-#     # success_url = ''
+    # def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+    #     context = super().get_context_data(**kwargs)
+    #     context['gamestate'] = self.object.game_state.last()
 
 class NewGame(CreateView):
     model = Game
@@ -41,8 +42,9 @@ class GameView(DetailView):
         out = GameState.objects.get(game__id = self.kwargs.get('pk'),date = self.kwargs.get('date'))
         # print(dict(out))
         return out
+
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
-    #     context["game_state"] = GameState.objects.filter(date=self.request)
+    #     context["user"] = self.request.user
     #     return context
     
