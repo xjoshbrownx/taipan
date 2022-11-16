@@ -3,8 +3,9 @@ from django.urls import reverse
 from django.views.generic import DetailView, ListView, CreateView, FormView 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from game.forms import NewGame
+# from game.forms import NewGame
 from game.models import GameState, Game
+from django.forms.models import model_to_dict
 
 # Create your views here.
 class SavedGames(LoginRequiredMixin, ListView):
@@ -39,12 +40,23 @@ class GameView(DetailView):
     template_name = 'game/game.html'
 
     def get_object(self):
+        print(self.request.GET.get('new_location'))
         out = GameState.objects.get(game__id = self.kwargs.get('pk'),date = self.kwargs.get('date'))
-        # print(dict(out))
+        if self.request.GET.get('new_location',out.current_location) != out.current_location:
+            out.current_location = self.request.GET.get('new_location')
+            print('travelling')
+            out.next_date()
+
+        print(out)
         return out
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["user"] = self.request.user
-    #     return context
-    
+# class NextLocation(CreateView):
+#     model = GameState
+#     template_name = 'partials/leave_port.html' 
+
+#     def form_valid(self, form):
+#         out = super().form_valid(form)
+#         initial_data = model_to_dict(self.object, exclude=['id'])
+#         out = GameState(initial=initial_data)
+#         return 
+

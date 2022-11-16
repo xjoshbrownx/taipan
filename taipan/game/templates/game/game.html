@@ -99,21 +99,15 @@
     </table>
 </div>
 {% comment %} SPOT END {% endcomment %}
-{% comment %} MESSAGE START {% endcomment %}
-<div>
-    <span>-----------------------------------</span>
-    message
-</div>
-{% comment %} MESSAGE END {% endcomment %}
 {% comment %} NAVIGATION START {% endcomment %}
-<div>
-    <a href='#'>Hong Kong</a>
-    <a href='#'>Shanghai</a>
-    <a href='#'>Nagasaki</a>
-    <a href='#'>Saigon</a>
-    <a href='#'>Manila</a>
-    <a href='#'>Singapore</a>
-    <a href='#'>Batavia</a>
+<div style="background-color: green; color: red;">
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=HK">Hong Kong</a>
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=SH">Shanghai</a>
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=NS">Nagasaki</a>
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=SG">Saigon</a>
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=MN">Manila</a>
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=SP">Singapore</a>
+    <a href="{% url 'game' pk=game.game.id date=game.date %}/?new_location=BV">Batavia</a>
 </div>
 {% comment %} NAVIGATION END {% endcomment %}
 

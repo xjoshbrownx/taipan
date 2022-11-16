@@ -100,3 +100,17 @@ class GameState(models.Model):
     general_spot = models.IntegerField(default=1)
     x_points = models.IntegerField(default=0)
 
+    def next_date(self):
+        self.date +=1
+        if self.month + 1 % 12 == 0:
+            self.month = 1
+            self.year +=1
+        else: 
+            self.month += 1
+        self.pk = None
+        self.save()
+
+    # def travel(self, next_location):
+    #     self.next_date()
+    #     self.current_location = next_location
+        

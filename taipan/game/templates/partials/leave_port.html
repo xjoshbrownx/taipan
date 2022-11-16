@@ -1,0 +1,13 @@
+<div>
+    <span>Taipan, to where do you wish to sail?</span>
+</div>
+
+<div style="background-color: red; color: green;">
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=HK">Hong Kong</a>
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=SH">Shanghai</a>
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=NS">Nagasaki</a>
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=SG">Saigon</a>
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=MN">Manila</a>
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=SP">Singapore</a>
+    <a href="{% url 'game' pk= game.game int= game.date %}?new_location=BV">Batavia</a>
+</div>
